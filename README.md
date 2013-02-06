@@ -69,7 +69,7 @@ jRes.addFunc({
 });
 ```
 
-Or an array of functions:
+Or an array of breakpoints and functions:
 
 ``` JavaScript
 // register enter and exit functions for multiple breakpoints and functions
