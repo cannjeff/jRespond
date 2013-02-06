@@ -27,22 +27,24 @@
 		var resizeTmrSpd = resizeTmrSlow;
 
 		// send media to the mediaListeners array
-		var addFunction = function(elm) {
+		var addFunction = function(elmArr) {
+			for (var i = 0; i < elmArr.length; i++) {
+				var elm = elmArr[i];
+				var brkpt = elm['breakpoint'];
+				var entr = elm['enter'] || undefined;
 
-			var brkpt = elm['breakpoint'];
-			var entr = elm['enter'] || undefined;
+				// add function to stack
+				mediaListeners.push(elm);
 
-			// add function to stack
-			mediaListeners.push(elm);
+				// add corresponding entry to mediaInit
+				mediaInit.push(false);
 
-			// add corresponding entry to mediaInit
-			mediaInit.push(false);
-
-			if (testForCurr(brkpt)) {
-				if (entr !== undefined) {
-					entr.call();
+				if (testForCurr(brkpt)) {
+					if (entr !== undefined) {
+						entr.call();
+					}
+					mediaInit[(mediaListeners.length - 1)] = true;
 				}
-				mediaInit[(mediaListeners.length - 1)] = true;
 			}
 		};
 
