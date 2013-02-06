@@ -72,7 +72,7 @@ jRes.addFunc({
 Or an array of functions:
 
 ``` JavaScript
-// register enter and exit functions for multiple breakpoints
+// register enter and exit functions for multiple breakpoints and functions
 jRes.addFunc([
 	{
 		breakpoint: 'desktop',
